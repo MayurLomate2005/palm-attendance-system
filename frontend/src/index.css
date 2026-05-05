@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-surface text-slate-100 font-sans;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.06) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-surface-100; }
+  ::-webkit-scrollbar-thumb { @apply bg-surface-300 rounded-full; }
+}
+
+@layer components {
+  /* ── Cards ─────────────────────────────────────────────────────────── */
+  .card {
+    @apply bg-surface-100 border border-white/5 rounded-2xl p-6 shadow-xl backdrop-blur-sm;
+  }
+  .card-sm {
+    @apply bg-surface-100 border border-white/5 rounded-xl p-4 shadow-lg;
+  }
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm
+           transition-all duration-200 cursor-pointer select-none disabled:opacity-50
+           disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2
+           focus:ring-offset-surface active:scale-95;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 hover:bg-brand-500 text-white focus:ring-brand-500
+           shadow-lg shadow-brand-600/25;
+  }
+  .btn-secondary {
+    @apply btn bg-surface-200 hover:bg-surface-300 text-slate-200 focus:ring-slate-500;
+  }
+  .btn-danger {
+    @apply btn bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white
+           border border-red-500/30 focus:ring-red-500;
+  }
+  .btn-success {
+    @apply btn bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white
+           border border-emerald-500/30 focus:ring-emerald-500;
+  }
+  .btn-icon {
+    @apply btn p-2 bg-surface-200 hover:bg-surface-300 text-slate-300;
+  }
+
+  /* ── Form Inputs ────────────────────────────────────────────────────── */
+  .input {
+    @apply w-full bg-surface-200 border border-white/10 rounded-xl px-4 py-3
+           text-slate-100 placeholder-slate-500 text-sm
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+           transition-all duration-200;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-400 mb-1.5;
+  }
+
+  /* ── Badges ─────────────────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-green  { @apply badge bg-emerald-400/10 text-emerald-400 border border-emerald-400/20; }
+  .badge-red    { @apply badge bg-red-400/10 text-red-400 border border-red-400/20; }
+  .badge-blue   { @apply badge bg-blue-400/10 text-blue-400 border border-blue-400/20; }
+  .badge-yellow { @apply badge bg-yellow-400/10 text-yellow-400 border border-yellow-400/20; }
+  .badge-purple { @apply badge bg-purple-400/10 text-purple-400 border border-purple-400/20; }
+
+  /* ── Table ──────────────────────────────────────────────────────────── */
+  .table-wrap { @apply overflow-x-auto rounded-xl border border-white/5; }
+  .table      { @apply w-full text-sm text-left; }
+  .table thead { @apply bg-surface-200 text-slate-400 uppercase text-xs tracking-wider; }
+  .table thead th { @apply px-4 py-3 first:rounded-tl-xl last:rounded-tr-xl; }
+  .table tbody tr {
+    @apply border-t border-white/5 hover:bg-white/3 transition-colors duration-150;
+  }
+  .table tbody td { @apply px-4 py-3 text-slate-300; }
+
+  /* ── Sidebar ────────────────────────────────────────────────────────── */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+           text-slate-400 hover:text-white hover:bg-white/5
+           transition-all duration-200 cursor-pointer;
+  }
+  .nav-item.active {
+    @apply bg-brand-600/20 text-brand-400 border border-brand-500/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-400 to-violet-400 bg-clip-text text-transparent;
+  }
+  .glow-brand {
+    box-shadow: 0 0 30px rgba(99,102,241,0.3);
+  }
+  .bg-white\/3 { background-color: rgba(255,255,255,0.03); }
+}
